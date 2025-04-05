@@ -7,6 +7,7 @@ router = APIRouter(prefix="/callbacks", tags=["callbacks"])
 
 @router.post("/mpesa")
 async def mpesa_callback(request: Request, db: Session = Depends(get_db)):
+    
     data = await request.json()
     result = data.get("Body", {}).get("stkCallback", {})
     
